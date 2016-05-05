@@ -3,6 +3,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>Home Page</title>
+	<script type="text/javascript">
+
+	function callback(fn,args){
+		if(typeof(fn) == 'function'){
+			fn(args);
+		}
+	}
+
+	callback(function(p1,p2){
+		alert(p1+p2);
+	},1,2);
+
+
+	</script>
 </head>
 <body>
 	<h1>Test</h1>
