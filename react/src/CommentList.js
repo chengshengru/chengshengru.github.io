@@ -1,0 +1,3 @@
+var CommentList = React.createClass({
+	
+});

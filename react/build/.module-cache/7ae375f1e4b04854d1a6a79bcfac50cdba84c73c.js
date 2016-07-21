@@ -45,9 +45,6 @@ var CommentBox = React.createClass({displayName: "CommentBox",
 	getInitialState : function(){
 		return {data:[]};
 	},
-	componentDidMount: function() {
-		
-	},
 	render: function() {
 		return (
 			React.createElement("div", {className: "commentBox"}, 

@@ -25,7 +25,8 @@ var CommentList = React.createClass({displayName: "CommentList",
 		});	
 		return (
 			React.createElement("div", {className: "commentList"}, 
-				        	commentNode
+				        	React.createElement(Comment, {author: "Pete Hunt"}, "This is one comment"), 
+        					React.createElement(Comment, {author: "Jordan Walke"}, "This is *another* comment")
 			)
 		);
 	}
@@ -42,17 +43,11 @@ var CommentForm = React.createClass({displayName: "CommentForm",
 });
 
 var CommentBox = React.createClass({displayName: "CommentBox",
-	getInitialState : function(){
-		return {data:[]};
-	},
-	componentDidMount: function() {
-		
-	},
 	render: function() {
 		return (
 			React.createElement("div", {className: "commentBox"}, 
 				React.createElement("h1", null, "Comments"), 
-				React.createElement(CommentList, {data: this.this.state.data}), 
+				React.createElement(CommentList, {data: this.props.data}), 
 				React.createElement(CommentForm, null)
 			)
 		);

@@ -1,31 +1,21 @@
 var Comment = React.createClass({displayName: "Comment",
-	rawMarkup:function(){
-		var rawMarkup = marked(this.props.children.toString(),{sanitize:true});
-		return {__html:rawMarkup};
-	},
 	render: function() {
 		return (
 			 React.createElement("div", {className: "comment"}, 
         				React.createElement("h2", {className: "commentAuthor"}, 
           				this.props.author
         				), 
-        				 React.createElement("span", {dangerouslySetInnerHTML: this.rawMarkup()})
+        				this.props.children
       			)
 		);
 	}
 });
 var CommentList = React.createClass({displayName: "CommentList",
 	render: function() {
-		var commentNode = this.props.data.map(function(comment){
-			return (
-				React.createElement(Comment, {author: comment.author}, 
-					comment.text
-				)
-			);
-		});	
 		return (
 			React.createElement("div", {className: "commentList"}, 
-				        	commentNode
+				        	React.createElement(Comment, {author: "Pete Hunt"}, "This is one comment"), 
+        					React.createElement(Comment, {author: "Jordan Walke"}, "This is *another* comment")
 			)
 		);
 	}
@@ -42,26 +32,17 @@ var CommentForm = React.createClass({displayName: "CommentForm",
 });
 
 var CommentBox = React.createClass({displayName: "CommentBox",
-	getInitialState : function(){
-		return {data:[]};
-	},
-	componentDidMount: function() {
-		
-	},
 	render: function() {
 		return (
 			React.createElement("div", {className: "commentBox"}, 
 				React.createElement("h1", null, "Comments"), 
-				React.createElement(CommentList, {data: this.this.state.data}), 
+				React.createElement(CommentList, null), 
 				React.createElement(CommentForm, null)
 			)
 		);
 	}
 });
 
-var data = [
-  {author: "Pete Hunt", text: "This is one comment"},
-  {author: "Jordan Walke", text: "This is *another* comment"}
-];
 
-ReactDOM.render(React.createElement(CommentBox, {data: data}),document.getElementById('content'));
+
+ReactDOM.render(React.createElement(CommentBox, null),document.getElementById('content'));
