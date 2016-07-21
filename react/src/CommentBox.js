@@ -55,10 +55,10 @@ var CommentBox = React.createClass({
 			}.bind(this),
 			error:function(xhr,status,err){
 				console.error(this.props.url,err.toString());
-			}.bind(this);
+			}.bind(this)
 		});
 	},
-	render: function() {
+	render: function() { 
 		return (
 			<div className="commentBox">
 				<h1>Comments</h1>
